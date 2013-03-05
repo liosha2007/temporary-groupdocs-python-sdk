@@ -1,0 +1,3 @@
+pyramid > 1.3
+pyramid-beaker >= 0.7
+groupdocs-python >= 1.2

@@ -1,0 +1,176 @@
+<metal:main
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    use-macro="load: layout.pt">
+    <tal:block metal:fill-slot="content">
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+		<h3 style="text-align:center;"><a href="/">GroupDocs Python SDK Samples</a> - Sample11</h3>
+
+		<div class='samplecontent' style="padding:10px;">
+			<i>This sample will show how to create and post an annotation into document using Python SDK</i> <br/>
+           <br />
+           <br />
+           <a href="/docs/sample11.html">Docs for this sample</a>
+           <br />
+
+			<p>You entered: </p>
+			<p>Client Id = ${userId|''}</p>
+			<p>Private Key = ${privateKey|''}</p>
+			<p>File Id = ${fileId|''}</p>
+			<p>Annotation info: </p>
+			<p>Annotation Id = ${annotationId|''}</p>
+			<p>Annotation type = ${annotationType|''}</p>
+			<p>Annotation text = ${annotationText|''}</p>
+
+			<div tal:condition="annotationId|None">
+                <button name="delete_annotation" value="1">Delete annotation</button>
+            </div>
+
+			<p><font color="red">${error|''}</font></p>
+			<div id="requestForm" style="padding: 20px; border: 1px solid black;">
+			<form action="/sample11" method = "post" enctype = 'multipart/form-data'>
+                        <input type="hidden" name="annotationId" value="${annotationId|''}">
+				<p> Enter data for request and press "Make request" button </p>
+
+               <label for='client_id'>GroupDocs Client ID</label>
+               <br />
+               <input type='text', name='client_id' value="${userId|''}" />
+               <br />
+               <label for='private_key'>GroupDocs Private Key</label>
+               <br />
+               <input type='text', name='private_key'  value="${privateKey|''}" />
+               <br />
+               <label for='private_key'>File ID</label>
+               <br />
+               <input type='text', name='fileId'  value="${fileId|''}" />
+                <br />
+                <br />
+
+                <label for='annotation_type'>Annotation Type</label>
+                <br />
+                <select name="annotation_type" id="annotation_type">
+                    <option value="text">Text</option>
+                    <option value="area">Area</option>
+                    <option value="point" selected>Point</option>
+                </select>
+                <br />
+                <br />
+
+                <fieldset style="border: thin solid #333; padding: 1em; margin-bottom: 5px;">
+                <legend>Parameters (all are required)</legend>
+                <div>
+                    <span>Box X</span>
+                    <input minlength="0" name="box_x" placeholder="double" type="text" value="">
+                </div>
+                <div>
+                    <span>Box Y</span>
+                    <input minlength="0" name="box_y" placeholder="double" type="text" value="">
+                </div>
+
+                <div id="box-params" style="display:none;">
+                    <div>
+                        <span>Box Width</span>
+                        <input minlength="0" name="box_width" placeholder="double" type="text" value="">
+                    </div>
+                    <div>
+                        <span>Box Height</span>
+                        <input minlength="0" name="box_height" placeholder="double" type="text" value="">
+                    </div>
+
+                </div>
+
+                <div id="annotation-position" style="display:none;">
+                    <div>
+                        <span>Annotation Position X</span>
+                        <input minlength="0" name="annotationPosition_x" placeholder="double" type="text" value="">
+                    </div>
+                    <div>
+                        <span>Annotation Position Y</span>
+                        <input minlength="0" name="annotationPosition_y" placeholder="double" type="text" value="">
+                    </div>
+                </div>
+
+                <div id="text-params" style="display:none;">
+                    <div>
+                        <span>Range Position</span>
+                        <input minlength="0" name="range_position" placeholder="double" type="text" value="">
+                    </div>
+                    <div>
+                        <span>Range Length</span>
+                        <input minlength="0" name="range_length" placeholder="double" type="text" value="">
+                    </div>
+                </div>
+
+                <div>
+                    <span>Text</span>
+                    <input minlength="0" name="text" placeholder="string" type="text" value="">
+                </div>
+                </fieldset>
+
+                <input type='submit' value='Make Request'/>
+            </form>
+			</div>
+
+
+			<div  style="padding:20px; border:1px solid black;">
+			    ${structure:iframe|''}
+			</div>
+			<br/>
+		</div>
+
+		<div style="padding:10px;">
+			Choose anothe one sample:
+            <ul>
+                <li> <a href="/sample01">Sample01 - How to login to GroupDocs using the API</li>
+                <li> <a href="/sample02">Sample02 - How to list files within GroupDocs Storage using the Storage API</li>
+                <li> <a href="/sample03">Sample03 - How to upload a file to GroupDocs using the Storage API</li>
+                <li> <a href="/sample04">Sample04 - How to download a file from GroupDocs Storage using the Storage API</li>
+                <li> <a href="/sample05">Sample05 - How to copy / move a file using the GroupDocs Storage API</li>
+                <li> <a href="/sample06">Sample06 - How to add a Signature to a document in GroupDocs Signature</li>
+                <li> <a href="/sample07">Sample07 - How to create a list of thumbnails for a document</li>
+                <li> <a href="/sample08">Sample08 - How to return a URL representing a single page of a Document</li>
+                <li> <a href="/sample09">Sample09 - How to generate a embedded Viewer URL for a DocumentI</li>
+                <li> <a href="/sample11">Sample11 - How programmatically create and post an annotation into document. How to delete the annotation</li>
+                <li> <a href="/sample12">Sample12 - How to list all annotations from document</li>
+                <li> <a href="/sample13">Sample13 - How to add collaborator to doc with annotations</li>
+                <li> <a href="/sample14">Sample14 - How to check the list of shares for a folder</li>
+                <li> <a href="/sample15">Sample15 - How to check the number of document's views</li>
+                <li> <a href="/sample16">Sample16 - How to insert Assembly questionary into webpage</li>
+                <li> <a href="/sample17">Sample17 - How to upload a file into the storage and compress it into zip archive</li>
+                <li> <a href="/sample18">Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF</li>
+                <li> <a href="/sample19">Sample19 - How to Compare documents using Python SDK</a></li>
+                <li> <a href="/sample20">Sample20 - How to Get Compare Change list for document using Python SDK</a></li>
+                <li> <a href="/sample21">Sample21 - How to Create and Upload Envelop to GroupDocs account using Python SDK</a></li>
+                <li> <a href="/sample22">Sample22 - How create or update user and add him to collaborators using Python SDK</a></li>
+                <li> <a href="/sample23">Sample23 - How View Document pages as images using Python SDK </a></li>
+                <li> <a href="/sample24">Sample24 - How to upload file from URL to GroupDocs account using Python SDK</a></li>
+            </ul>
+		</div>
+
+        <script>
+            $(function() {
+                $('select[name="annotation_type"]').change(function() {
+                    var obj = $(this);
+
+                    if (obj.val() == "text") {
+                        $('#text-params, #annotation-position, #box-params').show();
+                    }
+                    else if (obj.val() == "area") {
+                        $('#box-params').show();
+                        $('#annotation-position').hide();
+                        $('#text-params').hide();
+                    }
+                    else if (obj.val() == "point") {
+                        $('#annotation-position').hide();
+                        $('#box-params').hide();
+                        $('#text-params').hide();
+                    }
+                });
+            });
+        </script>
+
+    </tal:block>
+</metal:main>
+
